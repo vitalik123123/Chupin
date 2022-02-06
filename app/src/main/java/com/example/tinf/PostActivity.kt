@@ -57,8 +57,12 @@ class PostActivity : AppCompatActivity(R.layout.activity_post) {
     private fun observeNetworkConnection() {
         connectivityLiveData.observe(this) { isConnected ->
             if (isConnected) {
+                content.visibility = View.VISIBLE
+                networkError.visibility= View.GONE
                 networkSnackbar.dismiss()
             } else {
+                content.visibility = View.GONE
+                networkError.visibility= View.VISIBLE
                 networkSnackbar.show()
             }
         }
